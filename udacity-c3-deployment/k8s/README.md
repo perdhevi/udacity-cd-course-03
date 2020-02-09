@@ -1,4 +1,4 @@
-##DEPLOYMENT Sequence##
+# DEPLOYMENT Sequence
 
 follow the sequence for proper deployment
 1. deploy backend-user and apply backend-user-service 
