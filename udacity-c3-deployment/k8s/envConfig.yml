@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: udagram-perdhevi-dev
+  AWS_PROFILE: default
+  AWS_REGION: us-east-2
+  JWT_SECRET: P@ssw0rd4JWTOkay
+  POSTGRESS_DB: udagramperdhevidev
+  POSTGRESS_HOST: udagramperdhevidev.cznbrnyd2yii.us-east-2.rds.amazonaws.com
+  URL: http://localhost:8100  
+metadata:
+  name: env-config
