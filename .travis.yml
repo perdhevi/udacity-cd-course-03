@@ -16,8 +16,4 @@ before_install:
 
 install:
   - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
-    on:
-      branch: master
-  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build-qa.yaml build --parallel 
-    on:
-      branch: staging
+
