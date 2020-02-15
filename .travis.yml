@@ -13,11 +13,8 @@ before_install:
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
+  - chmod +x ./udacity-c3-deployment/docker/checkBuild.sh
 
-install:
-  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
-    on:
-      branch: master
-  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build-qa.yaml build --parallel 
-    on:
-      branch: staging
+script:
+  - ./udacity-c3-deployment/docker/checkBuild.sh
+ 
