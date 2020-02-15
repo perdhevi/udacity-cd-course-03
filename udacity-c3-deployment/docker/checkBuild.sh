@@ -1,5 +1,6 @@
 /bin/sh
-if[ $TRAVIS_BRANCH = master]
+echo $TRAVIS_BRANCH
+if[ $TRAVIS_BRANCH = staging]
 then
-    echo $TRAVIS_BRANCH
+    echo "staging build"
 fi
