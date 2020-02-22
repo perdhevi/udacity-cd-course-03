@@ -16,3 +16,6 @@ else
     docker push $DOCKER_USERNAME/udacity-restapi-feed
     docker push $DOCKER_USERNAME/udacity-frontend:local    
 fi
+
+docker logout
+
