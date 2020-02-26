@@ -47,10 +47,10 @@ data:
 
 # References:
 ## Travis-CI
-![image of travis-ci](../screenshots/udacity-03-1.Travis.png?raw=true)
+![image of travis-ci](../master/screenshots/udacity-03-1.Travis.png?raw=true)
 
 ## Pods
-![image of get Pod](../screenshots/udacity-03-3. Get Pods.png?raw=true)
+![image of get Pod](../master/screenshots/udacity-03-3.Pods.png?raw=true)
 
 ## Apps
-![image of apps](../screenshots/udacity-03-4.apps screenshot.png?raw=true)
+![image of apps](../master/screenshots/udacity-03-4.apps.png?raw=true)
