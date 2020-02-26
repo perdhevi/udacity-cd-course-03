@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    service: backend-feed
+  name: backend-feed
+spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 1
+  revisionHistoryLimit: 2147483647
+  selector:
+    matchLabels:
+      service: backend-feed
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: backend-feed
+    spec:
+      containers:
+      - env:
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              key: URL
+              name: env-config
+        - name: AWS_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_BUCKET
+              name: env-config
+        - name: AWS_PROFILE
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_PROFILE
+              name: env-config
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_REGION
+              name: env-config
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              key: JWT_SECRET
+              name: env-config
+        - name: POSTGRESS_DB
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRESS_DB
+              name: env-config
+        - name: POSTGRESS_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRESS_HOST
+              name: env-config
+        - name: POSTGRESS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRESS_PASSWORD
+              name: env-secret
+        - name: POSTGRESS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRESS_USERNAME
+              name: env-secret
+        image: perdhevi/udacity-restapi-feed
+        imagePullPolicy: Always
+        name: backend-feed
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1Gi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /root/.aws/
+          name: aws-secret
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: aws-secret
+        secret:
+          defaultMode: 420
+          secretName: aws-secret
+status: {}
